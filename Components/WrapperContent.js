@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { H5 } from '../StyleComponents'
 
 const Content = styled.div`
   display: flex;
@@ -16,12 +17,12 @@ export default class WrapperContent extends Component {
   render() {
     return (
       <Content>
-        <h1 style={{ flex: 1 }}>
+        <H5 style={{ flex: 1 }}>
           Picture
-        </h1>
+        </H5>
         <ItemName>
           <p>{this.props.name}</p>
-          <p>SKU# {this.props.sku}</p>
+          <H5>SKU# {this.props.sku}</H5>
         </ItemName>
         <p style={{ flex: 1 }}>{this.props.quantity}</p>
         <p style={{ flex: 1 }}>${this.props.unitPrice}</p>

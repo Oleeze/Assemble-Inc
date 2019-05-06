@@ -1,30 +1,20 @@
 import React, { Component } from 'react'
-import Header from './Header.js'
+import Link from 'next/link'
 import styled from 'styled-components'
-import WrapperContent from './WrapperContent.js'
-import './cssStyle.css'
+import { Body, Button, Wrapper, WrapperHead, H5 } from '../StyleComponents/index.js'
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 2em;
-  
-`
-
-const WrapperHead = styled.div`
-  display: flex;
-  flex-direction: row;
-  border-bottom: 1px solid black;
-`
+import Header from '../Components/Header.js'
+import WrapperContent from '../Components/WrapperContent.js'
 
 const WrapperBottom = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   border-top: 1px solid black;
-`
-
-const Button = styled.button`
-  background: blue;
+  flex: 1;
+  > div:nth-child(1) {
+    display: flex;
+    flex-direction: row;
+  }
 `
 
 export default class App extends Component {
@@ -60,13 +50,13 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
+      <Body>
         <Header/>
         <Wrapper>
           <WrapperHead>
-            <h1 style={{ flex: 2 }}>Your Cart</h1>
-            <h1 style={{ flex: 1 }}>quantity</h1>
-            <h1 style={{ flex: 1 }}>price</h1>
+            <h2 style={{ flex: 2 }}>Your Cart</h2>
+            <H5 style={{ flex: 1 }}>quantity</H5>
+            <H5 style={{ flex: 1 }}>price</H5>
           </WrapperHead>
           {
             this.state.cart.map(item => {
@@ -74,12 +64,18 @@ export default class App extends Component {
             })
           }
           <WrapperBottom>
-            <h1>SUBTOTAL</h1>
-            <h1>${this.state.subTotal}</h1>
-            <Button>Check out</Button>
+            <div>
+            <H5>SUBTOTAL</H5>
+            <h5>${this.state.subTotal}</h5>
+            </div>
           </WrapperBottom>
+          <Link href="/checkout">
+              <Button>
+                Check out
+              </Button>
+            </Link>
         </Wrapper>
-      </div>
+      </Body>
     )
   }
 }
